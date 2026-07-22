@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1B - Fashion in Music</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f5;
+            color: #18181b;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .title-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .slide-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+            border-bottom: 2px dashed #d4d4d8;
+        }
+
+        /* Nav Dots */
+        .sticky-nav {
+            position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 15px;
+        }
+        .nav-dot {
+            width: 14px; height: 14px; border-radius: 50%; background-color: #cbd5e1; transition: all 0.3s; cursor: pointer; position: relative; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nav-dot:hover, .nav-dot.active { background-color: #0ea5e9; transform: scale(1.4); }
+        .nav-dot span {
+            position: absolute; right: 25px; top: 50%; transform: translateY(-50%); background: #1e293b; color: white; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .nav-dot:hover span { opacity: 1; }
+
+        /* Inputs */
+        .smart-input {
+            background: #fff;
+            border: 2px dashed #94a3b8;
+            color: #0284c7;
+            border-radius: 6px;
+            padding: 0.2rem 0.5rem;
+            font-weight: 700;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .smart-input:focus { border-color: #0ea5e9; border-style: solid; box-shadow: 0 0 0 3px rgba(14,165,233,0.2); }
+        .input-correct { border-color: #22c55e !important; border-style: solid !important; background-color: #dcfce7 !important; color: #166534 !important; }
+        .input-error { border-color: #ef4444 !important; border-style: solid !important; background-color: #fee2e2 !important; color: #991b1b !important; animation: shake 0.4s; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        /* Fashion Polaroids */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 30px 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            text-align: center;
+            transform: rotate(calc(-3deg + (random() * 6deg))); /* A bit of randomness simulated via classes later */
+            transition: transform 0.3s;
+        }
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 10;
+        }
+        .polaroid-img {
+            background: #f1f5f9;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Multiple Choice */
+        .mc-btn {
+            display: flex; align-items: center; width: 100%; padding: 1rem; margin-bottom: 0.5rem; border: 2px solid #e2e8f0; border-radius: 0.75rem; background-color: white; transition: all 0.2s; text-align: left; font-weight: 500;
+        }
+        .mc-btn:hover { background-color: #f8fafc; border-color: #cbd5e1; }
+        .mc-btn.selected { background-color: #f0f9ff; border-color: #0ea5e9; color: #0284c7; }
+        .mc-btn.correct { background-color: #dcfce7; border-color: #22c55e; color: #15803d; }
+        .mc-btn.incorrect { background-color: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+        .mc-letter { font-weight: bold; margin-right: 1rem; background-color: #f1f5f9; padding: 0.25rem 0.75rem; border-radius: 0.5rem; }
+        .mc-btn.selected .mc-letter { background-color: #bae6fd; }
+
+        /* Sentence Builder */
+        .word-brick {
+            display: inline-block; background: #e2e8f0; color: #334155; padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; margin: 4px; transition: all 0.2s; border: 2px solid transparent;
+        }
+        .word-brick:hover { background: #cbd5e1; transform: translateY(-2px); }
+        .word-brick.used { opacity: 0.4; pointer-events: none; transform: scale(0.9); }
+        
+        .build-zone {
+            min-height: 60px; background: white; border: 2px dashed #94a3b8; border-radius: 12px; padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        }
+        .built-word {
+            background: #0ea5e9; color: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; animation: popIn 0.2s ease-out;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sticky-nav hidden md:flex">
+        <a href="#slide-1" class="nav-dot active"><span>Welcome</span></a>
+        <a href="#slide-2" class="nav-dot"><span>Introduction</span></a>
+        <a href="#slide-3" class="nav-dot"><span>Fashion Timeline</span></a>
+        <a href="#slide-4" class="nav-dot"><span>Listening</span></a>
+        <a href="#slide-5" class="nav-dot"><span>Adjective Order</span></a>
+        <a href="#slide-6" class="nav-dot"><span>Exit Ticket</span></a>
+    </nav>
+
+    <section id="slide-1" class="slide-section bg-[#3698d4] p-0 border-none flex items-center justify-center">
+        <!-- Using the requested image verbatim -->
+        <img src="image_6f2af5.png" alt="Leonardo Da Vinci" class="w-full max-w-4xl mx-auto drop-shadow-2xl">
+    </section>
+
+    <section id="slide-2" class="slide-section bg-zinc-900 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at center, #0ea5e9 2px, transparent 2px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-5xl mx-auto w-full relative z-10 flex flex-col justify-center items-center h-full">
+            
+            <!-- Main Lesson Title -->
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-7xl font-black title-font text-white mb-4 drop-shadow-lg">
+                    Lesson 1B
+                </h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-sky-400 mb-2">Fashion in Music</h3>
+                <p class="text-xl text-slate-300 font-medium uppercase tracking-widest bg-slate-800 inline-block px-6 py-2 rounded-full border border-slate-700">
+                    <i class="fas fa-book-open mr-2 text-sky-500"></i> Page 12
+                </p>
+            </div>
+
+            <!-- Announcements Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+                <!-- Remedial Work Card -->
+                <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border-t-8 border-sky-500 shadow-2xl flex flex-col items-center justify-center transform transition-transform hover:scale-105">
+                    <div class="w-16 h-16 bg-sky-900 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-tools text-2xl text-sky-400"></i>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-black text-sky-400 tracking-tighter title-font mb-4 text-center">REMEDIAL WORK</h1>
+                    <p class="text-slate-200 font-medium text-lg text-center">
+                        <strong class="text-white block mb-2">Remember:</strong>
+                        Don't forget to participate!
+                    </p>
+                </div>
+
+                <!-- DaVinci Talks Card -->
+                <div class="bg-slate-800/80 backdrop-blur-sm p-8 rounded-3xl border-t-8 border-yellow-400 shadow-2xl flex flex-col items-center justify-center transform transition-transform hover:scale-105">
+                     <div class="w-16 h-16 bg-yellow-900/50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-microphone-alt text-2xl text-yellow-400"></i>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-black text-yellow-400 tracking-tighter title-font mb-4 text-center">DaVINCI TALKS</h1>
+                    <p class="text-slate-200 font-medium text-lg text-center">
+                        <strong class="text-white block mb-2">Announcement:</strong>
+                        Look for the month talk theme.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-slate-500 animate-bounce cursor-pointer" onclick="document.getElementById('slide-3').scrollIntoView({behavior:'smooth'})">
+                <i class="fas fa-chevron-down text-4xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="slide-3" class="slide-section bg-sky-50">
+        <div class="max-w-6xl mx-auto w-full px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black title-font text-slate-800 mb-4"><i class="fas fa-tshirt text-sky-500 mr-3"></i> Fashion Through the Decades</h2>
+                <p class="text-xl text-slate-600 font-medium">Look at the images and complete the sentences with the missing clothing vocabulary from Page 12.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- 1950s -->
+                <div class="polaroid transform -rotate-2">
+                    <div class="polaroid-img text-slate-800 bg-slate-200">
+                        🧥
+                    </div>
+                    <div class="font-black text-2xl text-red-500 mb-4 title-font tracking-widest">1950s</div>
+                    <p class="text-sm font-medium text-slate-700 leading-relaxed text-left">
+                        The iconic black <input type="text" id="v_1" class="smart-input w-20" placeholder="..."> jacket worn by James Dean is still in fashion today.
+                    </p>
+                </div>
+
+                <!-- 1960s -->
+                <div class="polaroid transform rotate-3">
+                    <div class="polaroid-img text-purple-600 bg-purple-100">
+                        👖✨
+                    </div>
+                    <div class="font-black text-2xl text-purple-500 mb-4 title-font tracking-widest">1960s</div>
+                    <p class="text-sm font-medium text-slate-700 leading-relaxed text-left">
+                        I love the hippie look from the 60s with those gorgeous <input type="text" id="v_2" class="smart-input w-20" placeholder="..."> trousers.
+                    </p>
+                </div>
+
+                <!-- 1980s -->
+                <div class="polaroid transform -rotate-1">
+                    <div class="polaroid-img text-blue-500 bg-blue-100">
+                        👖🌀
+                    </div>
+                    <div class="font-black text-2xl text-blue-500 mb-4 title-font tracking-widest">1980s</div>
+                    <p class="text-sm font-medium text-slate-700 leading-relaxed text-left">
+                        There was nothing worse than those hideous <input type="text" id="v_3" class="smart-input w-28" placeholder="..."> jeans.
+                    </p>
+                </div>
+
+                <!-- 1990s -->
+                <div class="polaroid transform rotate-2">
+                    <div class="polaroid-img text-orange-700 bg-orange-100">
+                        👕🔲
+                    </div>
+                    <div class="font-black text-2xl text-orange-500 mb-4 title-font tracking-widest">1990s</div>
+                    <p class="text-sm font-medium text-slate-700 leading-relaxed text-left">
+                        I'm crazy about the 90s and grunge with the cool checked <input type="text" id="v_4" class="smart-input w-24" placeholder="..."> shirts.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mt-12 text-center">
+                <button onclick="checkVocabulary()" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform hover:scale-105 text-lg">
+                    Check Fashion Vocabulary
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="slide-4" class="slide-section bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto w-full px-4">
+            <div class="flex items-center gap-4 mb-8 border-b border-slate-700 pb-6">
+                <span class="bg-fuchsia-500 text-white w-14 h-14 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg"><i class="fas fa-headphones"></i></span>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold title-font text-fuchsia-400">Listening Comprehension</h2>
+                    <p class="text-slate-400 text-lg">Listen to the radio interview with a fashion designer.</p>
+                </div>
+            </div>
+
+            <!-- Audio Player -->
+            <div class="bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-700 mb-10 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center shrink-0 border-2 border-fuchsia-500">
+                    <i class="fas fa-play text-2xl text-fuchsia-500"></i>
+                </div>
+                <div class="flex-grow w-full">
+                    <p class="font-bold text-lg mb-2 text-slate-200">Track 4: Interview with Lauren Taylor</p>
+                    <audio id="lessonAudio" controls class="w-full h-10 outline-none">
+                        <source src="mindset1-04.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element. Ensure 'mindset1-04.mp3' is present.
+                    </audio>
+                </div>
+            </div>
+
+            <!-- Questions -->
+            <div class="space-y-8">
+                <!-- Q1 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700" id="q1-container">
+                    <h3 class="text-xl font-bold mb-4">1. What is the main topic of the interview?</h3>
+                    <div class="space-y-2">
+                        <button class="mc-btn group" onclick="selectMcAnswer('q1', 'a', this)">
+                            <span class="mc-letter text-slate-700">a</span>
+                            <span class="text-slate-700 font-medium">The designer promoting her new collection.</span>
+                        </button>
+                        <button class="mc-btn group" onclick="selectMcAnswer('q1', 'b', this)">
+                            <span class="mc-letter text-slate-700">b</span>
+                            <span class="text-slate-700 font-medium">The influence of music on fashion.</span>
+                        </button>
+                        <button class="mc-btn group" onclick="selectMcAnswer('q1', 'c', this)">
+                            <span class="mc-letter text-slate-700">c</span>
+                            <span class="text-slate-700 font-medium">The launch of a new band.</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700" id="q2-container">
+                    <h3 class="text-xl font-bold mb-4">2. Which decades influence the designer's work? <span class="text-sm font-normal text-slate-400">(Select all that apply)</span></h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <label class="flex items-center space-x-3 p-3 bg-slate-700 rounded-lg border border-slate-600 cursor-pointer hover:bg-slate-600 transition-colors">
+                            <input type="checkbox" id="cb-50s" class="w-5 h-5 rounded accent-fuchsia-500">
+                            <span class="font-bold text-slate-300">1950s</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 bg-slate-700 rounded-lg border border-slate-600 cursor-pointer hover:bg-slate-600 transition-colors">
+                            <input type="checkbox" id="cb-60s" class="w-5 h-5 rounded accent-fuchsia-500">
+                            <span class="font-bold text-slate-300">1960s</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 bg-slate-700 rounded-lg border border-slate-600 cursor-pointer hover:bg-slate-600 transition-colors">
+                            <input type="checkbox" id="cb-70s" class="w-5 h-5 rounded accent-fuchsia-500">
+                            <span class="font-bold text-slate-300">1970s</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 bg-slate-700 rounded-lg border border-slate-600 cursor-pointer hover:bg-slate-600 transition-colors">
+                            <input type="checkbox" id="cb-80s" class="w-5 h-5 rounded accent-fuchsia-500">
+                            <span class="font-bold text-slate-300">1980s</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 bg-slate-700 rounded-lg border border-slate-600 cursor-pointer hover:bg-slate-600 transition-colors">
+                            <input type="checkbox" id="cb-90s" class="w-5 h-5 rounded accent-fuchsia-500">
+                            <span class="font-bold text-slate-300">1990s</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="checkListening()" class="bg-fuchsia-500 hover:bg-fuchsia-600 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform hover:scale-105 text-lg">
+                    Check Answers
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="slide-5" class="slide-section bg-white">
+        <div class="max-w-4xl mx-auto w-full px-4">
+            <div class="text-center mb-10">
+                <span class="bg-emerald-100 text-emerald-700 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest mb-4 inline-block">Extra Activity</span>
+                <h2 class="text-4xl md:text-5xl font-black title-font text-slate-800 mb-4">Adjective Order Prep</h2>
+                <p class="text-lg text-slate-600 font-medium">Did you notice how clothes were described in the reading? We follow a specific order when using multiple adjectives!</p>
+            </div>
+
+            <div class="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm mb-8">
+                <h3 class="font-bold text-emerald-600 uppercase tracking-widest text-sm mb-4">Basic Rule of Thumb:</h3>
+                <div class="flex flex-wrap gap-2 text-sm md:text-base font-bold text-slate-700 justify-center mb-6">
+                    <span class="bg-white px-3 py-1 rounded shadow-sm border border-slate-200">Opinion</span> <i class="fas fa-arrow-right text-slate-300 mt-1"></i>
+                    <span class="bg-white px-3 py-1 rounded shadow-sm border border-slate-200">Size/Shape</span> <i class="fas fa-arrow-right text-slate-300 mt-1"></i>
+                    <span class="bg-white px-3 py-1 rounded shadow-sm border border-slate-200">Color</span> <i class="fas fa-arrow-right text-slate-300 mt-1"></i>
+                    <span class="bg-white px-3 py-1 rounded shadow-sm border border-slate-200">Material</span> <i class="fas fa-arrow-right text-slate-300 mt-1"></i>
+                    <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded shadow-sm border border-emerald-200">NOUN</span>
+                </div>
+
+                <p class="text-center font-bold text-slate-600 mb-4">Click the words in the correct order to build the phrase:</p>
+
+                <!-- Interactive Sentence 1 -->
+                <div class="mb-8" id="build-container-1">
+                    <p class="text-sm font-bold text-slate-400 mb-2">1. "A ________ ________ ________"</p>
+                    <div class="build-zone mb-3" id="zone-1" onclick="returnWord(1, event)"></div>
+                    <div class="word-bank text-center" id="bank-1">
+                        <span class="word-brick" onclick="moveWord(1, this, 'jacket')">jacket</span>
+                        <span class="word-brick" onclick="moveWord(1, this, 'leather')">leather</span>
+                        <span class="word-brick" onclick="moveWord(1, this, 'black')">black</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Sentence 2 -->
+                <div id="build-container-2">
+                    <p class="text-sm font-bold text-slate-400 mb-2">2. "Some ________ ________ ________"</p>
+                    <div class="build-zone mb-3" id="zone-2" onclick="returnWord(2, event)"></div>
+                    <div class="word-bank text-center" id="bank-2">
+                        <span class="word-brick" onclick="moveWord(2, this, 'skinny')">skinny</span>
+                        <span class="word-brick" onclick="moveWord(2, this, 'jeans')">jeans</span>
+                        <span class="word-brick" onclick="moveWord(2, this, 'tight')">tight</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="checkSentences()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform hover:scale-105 text-lg">
+                    Verify Sentences
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="slide-6" class="slide-section bg-zinc-900 text-center border-none relative overflow-hidden">
+        <div class="max-w-3xl mx-auto w-full px-4 relative z-10">
+            
+            <i class="fas fa-ticket-alt text-6xl text-yellow-400 mb-6 drop-shadow-lg"></i>
+            <h2 class="text-5xl md:text-6xl font-black title-font text-white uppercase tracking-widest mb-4">Exit Ticket</h2>
+            <p class="text-xl text-slate-300 font-medium mb-10">To finish today's class, write one sentence describing a clothing item you love. Use at least <strong class="text-sky-400">two adjectives in the correct order</strong>!</p>
+            
+            <div class="bg-slate-800 p-2 rounded-2xl shadow-inner mb-6">
+                <textarea id="exit-ticket-input" rows="3" class="w-full bg-slate-900 text-white rounded-xl p-4 outline-none border-2 border-slate-700 focus:border-sky-500 transition-colors resize-none text-lg" placeholder="Example: I really love my old comfortable sneakers..."></textarea>
+            </div>
+            
+            <p id="exit-warning" class="text-red-400 text-sm font-bold hidden mb-4"><i class="fas fa-exclamation-triangle"></i> Please write your sentence before leaving!</p>
+            
+            <button id="exit-btn" onclick="submitExitTicket()" class="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold py-4 px-12 rounded-full shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-all hover:scale-105 text-xl">
+                Submit & Finish Class
+            </button>
+
+            <!-- Success Message -->
+            <div id="success-msg" class="hidden mt-10">
+                <h3 class="text-4xl font-black title-font text-green-400 mb-2">CLASS DISMISSED!</h3>
+                <p class="text-slate-400 text-lg">Great job today. See you next time!</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for sticky navbar
+        document.querySelectorAll('.nav-dot').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Update active dot on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('.slide-section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 300) { current = section.getAttribute('id'); }
+            });
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href').substring(1) === current) { dot.classList.add('active'); }
+            });
+        });
+
+        // Validation Helper
+        function validateInput(id, correctAnswers) {
+            const input = document.getElementById(id);
+            if(!input) return;
+            let val = input.value.trim().toLowerCase();
+            input.classList.remove('input-correct', 'input-error');
+            
+            if (correctAnswers.includes(val)) {
+                input.classList.add('input-correct');
+            } else {
+                input.classList.add('input-error');
+                input.value = correctAnswers[0]; // Auto-correct to show answer
+            }
+        }
+
+        // --- Vocabulary Check ---
+        function checkVocabulary() {
+            validateInput('v_1', ['leather']);
+            validateInput('v_2', ['flared']);
+            validateInput('v_3', ['acid-washed', 'acid washed']);
+            validateInput('v_4', ['flannel']);
+        }
+
+        // --- Listening Logic ---
+        let selectedAnswers = { q1: null };
+        const correctListening = {
+            q1: 'b',
+            q2_decades: ['cb-60s', 'cb-90s'] // Based on script
+        };
+
+        function selectMcAnswer(question, answer, btnElement) {
+            const container = document.getElementById(`${question}-container`);
+            const buttons = container.querySelectorAll('.mc-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('selected', 'correct', 'incorrect'));
+            btnElement.classList.add('selected');
+            selectedAnswers[question] = answer;
+        }
+
+        function checkListening() {
+            // Check Q1
+            if(selectedAnswers.q1) {
+                const container = document.getElementById('q1-container');
+                const buttons = container.querySelectorAll('.mc-btn');
+                
+                buttons.forEach(btn => {
+                    const isSelected = btn.classList.contains('selected');
+                    const isCorrectBtn = btn.getAttribute('onclick').includes(`'${correctListening.q1}'`);
+                    
+                    btn.classList.remove('selected');
+                    
+                    if(isCorrectBtn) {
+                        btn.classList.add('correct');
+                        btn.querySelector('.mc-letter').classList.remove('text-slate-700');
+                    } else if (isSelected && !isCorrectBtn) {
+                        btn.classList.add('incorrect');
+                        btn.querySelector('.mc-letter').classList.remove('text-slate-700');
+                    }
+                });
+            }
+
+            // Check Q2 (Checkboxes)
+            const decades = ['cb-50s', 'cb-60s', 'cb-70s', 'cb-80s', 'cb-90s'];
+            decades.forEach(id => {
+                const cb = document.getElementById(id);
+                const label = cb.parentElement;
+                
+                label.classList.remove('border-green-500', 'bg-green-900/30', 'border-red-500', 'bg-red-900/30');
+                
+                if(correctListening.q2_decades.includes(id)) {
+                    if(cb.checked) {
+                        label.classList.add('border-green-500', 'bg-green-900/30');
+                    } else {
+                        label.classList.add('border-green-500', 'border-dashed'); 
+                    }
+                } else {
+                    if(cb.checked) {
+                        label.classList.add('border-red-500', 'bg-red-900/30');
+                    }
+                }
+            });
+        }
+
+        // --- Adjective Order Builder Logic ---
+        let builtSentences = { 1: [], 2: [] };
+        
+        function moveWord(zoneId, btnElement, word) {
+            if(btnElement.classList.contains('used')) return;
+            
+            const zone = document.getElementById(`zone-${zoneId}`);
+            const newWord = document.createElement('span');
+            newWord.className = 'built-word';
+            newWord.innerText = word;
+            newWord.dataset.source = btnElement.innerText; // to link back
+            
+            zone.appendChild(newWord);
+            builtSentences[zoneId].push(word);
+            
+            btnElement.classList.add('used');
+        }
+
+        function returnWord(zoneId, event) {
+            if(event.target.classList.contains('built-word')) {
+                const word = event.target.innerText;
+                event.target.remove();
+                
+                // Remove from array
+                const index = builtSentences[zoneId].indexOf(word);
+                if (index > -1) builtSentences[zoneId].splice(index, 1);
+                
+                // Unmark in bank
+                const bank = document.getElementById(`bank-${zoneId}`);
+                const bricks = bank.querySelectorAll('.word-brick');
+                bricks.forEach(b => {
+                    if(b.innerText === word) b.classList.remove('used');
+                });
+                
+                document.getElementById(`zone-${zoneId}`).classList.remove('border-green-500', 'border-red-500', 'bg-green-50', 'bg-red-50');
+            }
+        }
+
+        function checkSentences() {
+            const correct1 = ['black', 'leather', 'jacket'];
+            const correct2 = ['tight', 'skinny', 'jeans'];
+
+            function verify(zoneId, userArr, correctArr) {
+                const zone = document.getElementById(`zone-${zoneId}`);
+                zone.classList.remove('border-green-500', 'border-red-500', 'bg-green-50', 'bg-red-50');
+                
+                if(userArr.join(',') === correctArr.join(',')) {
+                    zone.classList.add('border-green-500', 'bg-green-50');
+                } else {
+                    zone.classList.add('border-red-500', 'bg-red-50');
+                    zone.style.animation = 'shake 0.4s';
+                    setTimeout(() => zone.style.animation = '', 400);
+                }
+            }
+
+            verify(1, builtSentences[1], correct1);
+            verify(2, builtSentences[2], correct2);
+        }
+
+        // --- Exit Ticket ---
+        function submitExitTicket() {
+            const input = document.getElementById('exit-ticket-input');
+            const warning = document.getElementById('exit-warning');
+            const btn = document.getElementById('exit-btn');
+            const success = document.getElementById('success-msg');
+
+            if(input.value.trim().split(' ').length < 3) {
+                warning.classList.remove('hidden');
+                input.classList.add('border-red-500');
+                setTimeout(() => input.classList.remove('border-red-500'), 2000);
+            } else {
+                warning.classList.add('hidden');
+                btn.classList.add('hidden');
+                input.disabled = true;
+                input.classList.add('opacity-50');
+                success.classList.remove('hidden');
+            }
+        }
+
+    </script>
+</body>
+</html>
