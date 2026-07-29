@@ -32,7 +32,6 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
         
         body {
             background-color: #FAFAFA;
@@ -53,15 +52,11 @@
             box-shadow: 0 0 0 2px #ef4444 !important; 
         }
 
-        /* Custom Select and Input Styling */
-        .custom-select, .interactive-input {
+        /* Custom Select */
+        .custom-select {
             appearance: none;
             outline: none;
             transition: all 0.3s ease;
-        }
-        
-        .interactive-input:focus {
-            transform: scale(1.02);
         }
 
         /* Drag and Drop styles */
@@ -80,11 +75,6 @@
             transition-property: all;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition-duration: 300ms;
-        }
-
-        /* Band Poster Font */
-        .band-font {
-            font-family: 'Permanent Marker', cursive;
         }
     </style>
 </head>
@@ -112,9 +102,10 @@
 
     <main class="max-w-6xl mx-auto px-4 mt-8 space-y-12">
         
+        <!-- WARM UP: Timeline -->
         <section class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="bg-gradient-to-r from-pastel-pink via-pastel-purple to-pastel-blue px-6 py-4 border-b border-white/50">
-                <h2 class="font-bold text-lg text-gray-800"><i class="fas fa-history mr-2 text-purple-600"></i> Fashion Through the Decades</h2>
+                <h2 class="font-bold text-lg text-gray-800"><i class="fas fa-history mr-2 text-purple-600"></i> Warm-up: Fashion Through the Decades</h2>
             </div>
             <div class="p-6 overflow-x-auto">
                 <div class="flex gap-4 min-w-max pb-4">
@@ -180,6 +171,7 @@
             </div>
         </section>
 
+        <!-- MAIN ACTIVITIES -->
         <section class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 lg:p-8">
             <div class="flex items-center gap-3 mb-6">
                 <div class="bg-pastel-green text-green-700 px-5 py-2 rounded-full font-bold text-sm border border-green-200 shadow-sm flex items-center gap-2">
@@ -187,7 +179,7 @@
                 </div>
             </div>
 
-            <!-- Teen Explainer Box: Why do we care about fashion vocab? -->
+            <!-- Teen Explainer Box -->
             <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-5 mb-8 border border-green-100 shadow-inner">
                 <h3 class="font-bold text-green-800 mb-2 flex items-center gap-2">
                     <i class="fas fa-lightbulb text-yellow-500"></i> Teacher's Note: Dressing to Express!
@@ -316,385 +308,190 @@
                         </div>
                     </div>
                 </div>
-
-                <hr class="border-gray-100 border-2 rounded-full">
-
-                <!-- Activity 3 -->
-                <div>
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="bg-pastel-blue text-blue-700 w-10 h-10 rounded-full flex items-center justify-center font-black shrink-0 shadow-sm border-2 border-blue-200 text-lg">3</div>
-                        <div class="w-full">
-                            <p class="font-semibold text-lg text-gray-800 pt-1.5 mb-6">
-                                Put the highlighted words from exercise 2 and the new words below into the correct categories.
-                            </p>
-                            
-                            <!-- Word Bank -->
-                            <div class="bg-gradient-to-br from-pastel-blue to-blue-50 p-6 rounded-3xl border-2 border-blue-100 mb-8 shadow-md">
-                                <p class="text-sm text-blue-800 font-bold mb-4 flex items-center gap-2 uppercase tracking-wide">
-                                    <i class="fas fa-hand-pointer animate-bounce"></i> Drag the words from the bank:
-                                </p>
-                                <ul id="extraWordBank" class="flex flex-wrap gap-3 min-h-dropzone">
-                                    <!-- Extra words -->
-                                    <li data-cat="cat-opinion" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">awful</li>
-                                    <li data-cat="cat-style" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">baggy</li>
-                                    <li data-cat="cat-color" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">colorful</li>
-                                    <li data-cat="cat-opinion" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">comfortable</li>
-                                    <li data-cat="cat-material" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">cotton</li>
-                                    <li data-cat="cat-material" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">denim</li>
-                                    <li data-cat="cat-color" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">plain</li>
-                                    <li data-cat="cat-style" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">platform</li>
-                                    <li data-cat="cat-style" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">high-top</li>
-                                    <li data-cat="cat-material" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">silk</li>
-                                    <li data-cat="cat-color" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">striped</li>
-                                    <li data-cat="cat-style" class="bg-white border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-50 hover:-translate-y-0.5 transition-transform">worn-out</li>
-                                    
-                                    <!-- Highlighted words -->
-                                    <li data-cat="cat-color" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">black</li>
-                                    <li data-cat="cat-material" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">leather</li>
-                                    <li data-cat="cat-style" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">tight</li>
-                                    <li data-cat="cat-style" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">skinny</li>
-                                    <li data-cat="cat-opinion" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">hideous</li>
-                                    <li data-cat="cat-color" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">acid-washed</li>
-                                    <li data-cat="cat-opinion" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">cool</li>
-                                    <li data-cat="cat-color" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">checked</li>
-                                    <li data-cat="cat-material" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">flannel</li>
-                                    <li data-cat="cat-opinion" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">gorgeous</li>
-                                    <li data-cat="cat-style" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">flared</li>
-                                </ul>
-                            </div>
-
-                            <!-- Target Categories -->
-                            <div class="relative border-4 border-dashed border-blue-400 rounded-3xl p-6 pt-10 mt-10 bg-blue-50/50">
-                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white font-black px-6 py-2 rounded-full border-4 border-white shadow-lg flex items-center gap-2 tracking-wide">
-                                    <i class="fas fa-bullseye"></i> TARGET: Describing Clothes
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                    <!-- Style / Type -->
-                                    <div class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-sm flex flex-col">
-                                        <div class="bg-gray-100 text-center py-3 font-black text-gray-700 text-sm tracking-widest uppercase border-b-2 border-gray-200">Style / Type</div>
-                                        <ul id="cat-style" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-gray-50/50"></ul>
-                                    </div>
-                                    <!-- Material -->
-                                    <div class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-sm flex flex-col">
-                                        <div class="bg-gray-100 text-center py-3 font-black text-gray-700 text-sm tracking-widest uppercase border-b-2 border-gray-200">Material</div>
-                                        <ul id="cat-material" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-gray-50/50"></ul>
-                                    </div>
-                                    <!-- Color / Pattern -->
-                                    <div class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-sm flex flex-col">
-                                        <div class="bg-gray-100 text-center py-3 font-black text-gray-700 text-sm tracking-widest uppercase border-b-2 border-gray-200">Colour / Pattern</div>
-                                        <ul id="cat-color" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-gray-50/50"></ul>
-                                    </div>
-                                    <!-- Opinion -->
-                                    <div class="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-sm flex flex-col">
-                                        <div class="bg-gray-100 text-center py-3 font-black text-gray-700 text-sm tracking-widest uppercase border-b-2 border-gray-200">Opinion</div>
-                                        <ul id="cat-opinion" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-gray-50/50"></ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
+        <!-- GRAMMAR CONCEPT EXPLANATION (Lúdico para 13 anos) -->
         <section class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 lg:p-8">
             <div class="flex items-center gap-3 mb-6">
                 <div class="bg-pastel-purple text-purple-700 px-5 py-2 rounded-full font-bold text-sm border border-purple-200 shadow-sm flex items-center gap-2">
-                    <i class="fas fa-spell-check"></i> GRAMMAR
+                    <i class="fas fa-magic"></i> GRAMMAR HACK
                 </div>
             </div>
 
             <!-- Teen Explainer Box: Adjective Order -->
-            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 mb-10 border border-purple-100 shadow-inner">
-                <h3 class="font-black text-purple-800 mb-3 text-lg flex items-center gap-2">
-                    <i class="fas fa-magic text-pink-500"></i> The Secret VIP Line of Adjectives!
+            <div class="bg-gradient-to-br from-indigo-900 via-purple-900 to-black rounded-3xl p-8 border-4 border-purple-400 shadow-2xl relative overflow-hidden">
+                <!-- Decorative background elements -->
+                <i class="fas fa-star absolute top-4 right-10 text-yellow-300 opacity-50 text-2xl animate-pulse"></i>
+                <i class="fas fa-star absolute bottom-10 left-10 text-pink-400 opacity-30 text-4xl"></i>
+                
+                <h3 class="font-black text-white text-3xl mb-4 text-center tracking-tight">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">The VIP Line</span> of Adjectives 👑
                 </h3>
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    Imagine telling your friend about your new outfit. You wouldn't say, <em>"Look at my denim, black, awesome, baggy jeans!"</em> That just sounds... weird, right? 
+                
+                <p class="text-gray-200 leading-relaxed mb-6 text-center text-lg max-w-2xl mx-auto">
+                    Hey! Did you know English adjectives are total divas? 💅 They refuse to stand in the wrong order! Imagine saying: <br>
+                    <span class="line-through text-red-400 font-bold">"Look at my denim, black, awesome, baggy jeans!"</span> 🤢<br>
+                    That just hurts the ears! To sound like a native, you need the <strong>Secret VIP Code</strong> before the noun. Here is who gets into the club first:
                 </p>
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    In English, adjectives have a secret VIP order before they hit the noun. When using two or three adjectives, we usually follow this rule: 
-                    <strong>What you think about it</strong> comes first, then <strong>what it looks like (style/size)</strong>, then <strong>colour</strong>, and finally <strong>what it's made of (material)</strong> right next to the noun.
-                </p>
-                <div class="bg-white p-4 rounded-xl border border-purple-200 shadow-sm flex flex-wrap gap-2 items-center justify-center font-bold text-center">
-                    <span class="text-pink-600">Awesome (Opinion)</span> 
-                    <i class="fas fa-arrow-right text-gray-300"></i> 
-                    <span class="text-blue-600">Baggy (Style)</span> 
-                    <i class="fas fa-arrow-right text-gray-300"></i> 
-                    <span class="text-gray-800">Black (Colour)</span> 
-                    <i class="fas fa-arrow-right text-gray-300"></i> 
-                    <span class="text-indigo-600">Denim (Material)</span> 
-                    <i class="fas fa-arrow-right text-gray-300"></i> 
-                    <span class="bg-purple-200 px-2 py-1 rounded text-purple-900">Jeans! (Noun)</span>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+                    <!-- Step 1 -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center w-full md:w-40 hover:scale-105 transition-transform">
+                        <div class="bg-pink-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-black mx-auto mb-2 shadow-lg">1</div>
+                        <h4 class="font-black text-pink-300 uppercase text-sm mb-1">Opinion</h4>
+                        <p class="text-xs text-gray-300">What do you think?<br><em>(Awesome, Hideous)</em></p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-500 hidden md:block"></i>
+                    <i class="fas fa-chevron-down text-gray-500 block md:hidden"></i>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center w-full md:w-40 hover:scale-105 transition-transform">
+                        <div class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-black mx-auto mb-2 shadow-lg">2</div>
+                        <h4 class="font-black text-blue-300 uppercase text-sm mb-1">Style/Size</h4>
+                        <p class="text-xs text-gray-300">What does it look like?<br><em>(Baggy, Skinny)</em></p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-500 hidden md:block"></i>
+                    <i class="fas fa-chevron-down text-gray-500 block md:hidden"></i>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center w-full md:w-40 hover:scale-105 transition-transform">
+                        <div class="bg-yellow-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-black mx-auto mb-2 shadow-lg">3</div>
+                        <h4 class="font-black text-yellow-300 uppercase text-sm mb-1">Colour</h4>
+                        <p class="text-xs text-gray-300">What color is it?<br><em>(Black, Checked)</em></p>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-500 hidden md:block"></i>
+                    <i class="fas fa-chevron-down text-gray-500 block md:hidden"></i>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center w-full md:w-40 hover:scale-105 transition-transform">
+                        <div class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-black mx-auto mb-2 shadow-lg">4</div>
+                        <h4 class="font-black text-green-300 uppercase text-sm mb-1">Material</h4>
+                        <p class="text-xs text-gray-300">What's it made of?<br><em>(Denim, Leather)</em></p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-inner flex flex-wrap gap-2 items-center justify-center font-bold text-center text-lg md:text-xl">
+                    <span class="text-pink-500">Awesome</span> 
+                    <i class="fas fa-plus text-gray-300 text-sm"></i> 
+                    <span class="text-blue-500">Baggy</span> 
+                    <i class="fas fa-plus text-gray-300 text-sm"></i> 
+                    <span class="text-yellow-500">Black</span> 
+                    <i class="fas fa-plus text-gray-300 text-sm"></i> 
+                    <span class="text-green-500">Denim</span> 
+                    <i class="fas fa-arrow-right text-gray-400"></i> 
+                    <span class="bg-purple-600 px-3 py-1 rounded text-white shadow-md">Jeans! (Noun)</span>
+                </div>
+                <p class="text-center text-purple-300 text-sm mt-4 font-medium">✨ Keep this cheat code in mind for your homework! ✨</p>
+            </div>
+        </section>
+
+        <!-- EXIT TICKET -->
+        <section class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 lg:p-8">
+            <h3 class="font-black text-2xl text-gray-800 mb-6 flex items-center gap-3">
+                <div class="bg-pastel-pink w-12 h-12 rounded-xl flex items-center justify-center border-2 border-pink-200">
+                    <i class="fas fa-ticket-alt text-pink-500 text-2xl"></i> 
+                </div>
+                Exit Ticket
+            </h3>
+            <div class="bg-pastel-pink/40 p-6 rounded-2xl border-2 border-pink-100 space-y-6">
+                <div>
+                    <p class="text-gray-800 font-bold mb-3 text-lg">Today we studied about:</p>
+                    <textarea class="w-full rounded-xl border-2 border-white shadow-sm focus:border-pink-400 focus:ring-4 focus:ring-pink-100 p-4 text-gray-700 resize-none font-medium text-lg transition-all outline-none" rows="2" placeholder="Write your answer here..."></textarea>
+                </div>
+                <div>
+                    <p class="text-gray-800 font-bold mb-3 text-lg">One example of a clothing item with 2 adjectives in the correct order is:</p>
+                    <input type="text" class="w-full rounded-xl border-2 border-white shadow-sm focus:border-pink-400 focus:ring-4 focus:ring-pink-100 p-4 text-gray-700 font-medium text-lg transition-all outline-none" placeholder="e.g., cool black boots...">
                 </div>
             </div>
+        </section>
 
-            <div class="space-y-10">
-                <!-- Activity 4 -->
-                <div>
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="bg-pastel-purple text-purple-700 w-10 h-10 rounded-full flex items-center justify-center font-black shrink-0 shadow-sm border-2 border-purple-200 text-lg">4</div>
-                        <div class="w-full">
-                            <p class="font-semibold text-lg text-gray-800 pt-1.5 mb-8">
-                                Look back at the sentences in exercise 2 and complete the Target box with the types of adjectives you learned in exercise 3.
-                            </p>
-                            
-                            <div class="relative border-4 border-dashed border-purple-400 rounded-3xl p-8 pt-12 mt-6 max-w-4xl mx-auto bg-purple-50/30">
-                                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white font-black px-6 py-2 rounded-full border-4 border-white shadow-lg flex items-center gap-2 tracking-wide">
-                                    <i class="fas fa-sort-amount-down"></i> TARGET: Adjective Order
-                                </div>
-                                <p class="text-center text-gray-600 mb-8 font-medium">When using two or three adjectives to describe a noun, follow this order:</p>
-                                
-                                <div class="flex flex-wrap items-end justify-center gap-3 sm:gap-5 text-center">
-                                    <div class="w-32 flex flex-col gap-2">
-                                        <span class="text-xs font-black text-gray-400 uppercase tracking-widest bg-white rounded-full py-1 shadow-sm border border-gray-100">1st</span>
-                                        <input type="text" data-correct="opinion" onblur="checkInput(this)" class="interactive-input w-full bg-white border-2 border-purple-200 text-center font-bold text-purple-700 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 rounded-xl px-2 py-3 shadow-sm" placeholder="type...">
-                                    </div>
-                                    <i class="fas fa-plus text-gray-300 mb-4 text-sm hidden sm:block"></i>
-                                    <div class="w-32 flex flex-col gap-2">
-                                        <span class="text-xs font-black text-gray-400 uppercase tracking-widest bg-white rounded-full py-1 shadow-sm border border-gray-100">2nd</span>
-                                        <input type="text" data-correct="style,type,style/type,style / type" onblur="checkInput(this)" class="interactive-input w-full bg-white border-2 border-purple-200 text-center font-bold text-purple-700 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 rounded-xl px-2 py-3 shadow-sm" placeholder="type...">
-                                    </div>
-                                    <i class="fas fa-plus text-gray-300 mb-4 text-sm hidden sm:block"></i>
-                                    <div class="w-32 flex flex-col gap-2">
-                                        <span class="text-xs font-black text-gray-400 uppercase tracking-widest bg-white rounded-full py-1 shadow-sm border border-gray-100">3rd</span>
-                                        <input type="text" data-correct="color,colour,pattern,color/pattern,colour/pattern,color / pattern,colour / pattern" onblur="checkInput(this)" class="interactive-input w-full bg-white border-2 border-purple-200 text-center font-bold text-purple-700 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 rounded-xl px-2 py-3 shadow-sm" placeholder="type...">
-                                    </div>
-                                    <i class="fas fa-plus text-gray-300 mb-4 text-sm hidden sm:block"></i>
-                                    <div class="w-32 flex flex-col gap-2">
-                                        <span class="text-xs font-black text-gray-400 uppercase tracking-widest bg-white rounded-full py-1 shadow-sm border border-gray-100">4th</span>
-                                        <input type="text" data-correct="material" onblur="checkInput(this)" class="interactive-input w-full bg-white border-2 border-purple-200 text-center font-bold text-purple-700 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-100 rounded-xl px-2 py-3 shadow-sm" placeholder="type...">
-                                    </div>
-                                    <div class="flex flex-col gap-2 mb-1 sm:ml-4 mt-4 sm:mt-0">
-                                        <div class="font-black text-xl text-white bg-gray-800 px-6 py-2.5 rounded-xl shadow-md border-b-4 border-gray-900">+ NOUN</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- HOMEWORK (Activity 3 adapted into an interactive homework block) -->
+        <section class="bg-gradient-to-b from-blue-50 to-white rounded-3xl shadow-lg border-2 border-blue-200 p-6 lg:p-8 relative overflow-hidden mt-12">
+            <div class="absolute top-0 right-0 bg-blue-500 text-white px-6 py-2 rounded-bl-3xl font-black tracking-widest uppercase shadow-md">
+                Homework
+            </div>
+            
+            <h3 class="font-black text-2xl text-blue-900 mb-2 flex items-center gap-3 mt-4">
+                <i class="fas fa-gamepad text-blue-500 text-3xl"></i> 
+                Activity 3: The Vocabulary Sorter
+            </h3>
+            <p class="text-blue-700 font-medium mb-8">
+                Put the highlighted words from exercise 2 and the new words below into the correct categories. Use the VIP Line rule to help you remember!
+            </p>
+            
+            <!-- Word Bank -->
+            <div class="bg-white p-6 rounded-3xl border-2 border-blue-100 mb-8 shadow-sm">
+                <p class="text-sm text-blue-800 font-bold mb-4 flex items-center gap-2 uppercase tracking-wide">
+                    <i class="fas fa-hand-pointer animate-bounce"></i> Drag the words from the bank:
+                </p>
+                <ul id="extraWordBank" class="flex flex-wrap gap-3 min-h-dropzone">
+                    <!-- Extra words -->
+                    <li data-cat="cat-opinion" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">awful</li>
+                    <li data-cat="cat-style" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">baggy</li>
+                    <li data-cat="cat-color" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">colorful</li>
+                    <li data-cat="cat-opinion" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">comfortable</li>
+                    <li data-cat="cat-material" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">cotton</li>
+                    <li data-cat="cat-material" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">denim</li>
+                    <li data-cat="cat-color" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">plain</li>
+                    <li data-cat="cat-style" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">platform</li>
+                    <li data-cat="cat-style" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">high-top</li>
+                    <li data-cat="cat-material" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">silk</li>
+                    <li data-cat="cat-color" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">striped</li>
+                    <li data-cat="cat-style" class="bg-gray-100 border-2 border-gray-200 text-gray-800 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:bg-gray-200 hover:-translate-y-0.5 transition-transform">worn-out</li>
+                    
+                    <!-- Highlighted words from ex 2 -->
+                    <li data-cat="cat-color" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">black</li>
+                    <li data-cat="cat-material" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">leather</li>
+                    <li data-cat="cat-style" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">tight</li>
+                    <li data-cat="cat-style" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">skinny</li>
+                    <li data-cat="cat-opinion" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">hideous</li>
+                    <li data-cat="cat-color" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">acid-washed</li>
+                    <li data-cat="cat-opinion" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">cool</li>
+                    <li data-cat="cat-color" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">checked</li>
+                    <li data-cat="cat-material" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">flannel</li>
+                    <li data-cat="cat-opinion" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">gorgeous</li>
+                    <li data-cat="cat-style" class="bg-yellow-100 border-2 border-yellow-300 text-yellow-900 px-4 py-2 rounded-xl shadow-sm cursor-grab active:cursor-grabbing text-sm font-bold hover:-translate-y-0.5 transition-transform">flared</li>
+                </ul>
+            </div>
+
+            <!-- Target Categories -->
+            <div class="relative border-4 border-dashed border-blue-300 rounded-3xl p-6 pt-10 mt-10 bg-white">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white font-black px-6 py-2 rounded-full border-4 border-white shadow-lg flex items-center gap-2 tracking-wide">
+                    <i class="fas fa-bullseye"></i> TARGET: Drop Here!
                 </div>
-
-                <hr class="border-gray-100 border-2 rounded-full">
-
-                <!-- Activity 5 -->
-                <div>
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="bg-pastel-blue text-blue-600 w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm border-2 border-blue-200 text-lg" title="Pair Work">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div class="bg-pastel-purple text-purple-700 w-10 h-10 rounded-full flex items-center justify-center font-black shrink-0 shadow-sm border-2 border-purple-200 text-lg">5</div>
-                        <p class="font-semibold text-lg text-gray-800 pt-1.5">
-                            Use the words in brackets in the correct order to describe the underlined items. Look at the VIP line above if you forget!
-                        </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Style / Type -->
+                    <div class="bg-white rounded-2xl border-2 border-blue-200 overflow-hidden shadow-sm flex flex-col">
+                        <div class="bg-blue-100 text-center py-3 font-black text-blue-800 text-sm tracking-widest uppercase border-b-2 border-blue-200">Style / Type</div>
+                        <ul id="cat-style" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-blue-50/30"></ul>
                     </div>
-
-                    <div class="pl-2 sm:pl-16 grid gap-6">
-                        <!-- Card 1 -->
-                        <div class="bg-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                            <div class="absolute top-0 left-0 w-2 h-full bg-pink-400"></div>
-                            <div class="flex flex-col lg:flex-row lg:items-center gap-4">
-                                <span class="font-black text-gray-300 text-2xl w-6">1</span>
-                                <div class="flex-1 text-lg text-gray-700 leading-relaxed flex flex-wrap items-center gap-2">
-                                    <span>In the 50s,</span>
-                                    <input type="text" data-correct="plain white cotton" onblur="checkInput(this)" class="interactive-input bg-gray-50 border-2 border-gray-200 focus:border-pink-500 focus:bg-white text-center font-bold text-pink-600 px-4 py-2 w-full sm:w-64 rounded-xl shadow-inner transition-all placeholder:font-normal placeholder:text-gray-400 placeholder:text-sm" placeholder="(cotton / plain / white)">
-                                    <span class="text-gray-900 font-black underline decoration-4 decoration-pink-300 underline-offset-4">T-shirts</span>
-                                    <span>worn with black leather jackets became a popular trend.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="bg-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                            <div class="absolute top-0 left-0 w-2 h-full bg-blue-400"></div>
-                            <div class="flex flex-col lg:flex-row lg:items-center gap-4">
-                                <span class="font-black text-gray-300 text-2xl w-6">2</span>
-                                <div class="flex-1 text-lg text-gray-700 leading-relaxed flex flex-wrap items-center gap-2">
-                                    <span>The punk movement had teenagers wearing spike bracelets and</span>
-                                    <input type="text" data-correct="skinny black denim" onblur="checkInput(this)" class="interactive-input bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:bg-white text-center font-bold text-blue-600 px-4 py-2 w-full sm:w-64 rounded-xl shadow-inner transition-all placeholder:font-normal placeholder:text-gray-400 placeholder:text-sm" placeholder="(denim / skinny / black)">
-                                    <span class="text-gray-900 font-black underline decoration-4 decoration-blue-300 underline-offset-4">jeans</span>.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="bg-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                            <div class="absolute top-0 left-0 w-2 h-full bg-green-400"></div>
-                            <div class="flex flex-col lg:flex-row lg:items-center gap-4">
-                                <span class="font-black text-gray-300 text-2xl w-6">3</span>
-                                <div class="flex-1 text-lg text-gray-700 leading-relaxed flex flex-wrap items-center gap-2">
-                                    <span>Some of the</span>
-                                    <input type="text" data-correct="hideous baggy colorful,hideous baggy colourful" onblur="checkInput(this)" class="interactive-input bg-gray-50 border-2 border-gray-200 focus:border-green-500 focus:bg-white text-center font-bold text-green-600 px-4 py-2 w-full sm:w-72 rounded-xl shadow-inner transition-all placeholder:font-normal placeholder:text-gray-400 placeholder:text-sm" placeholder="(baggy / colorful / hideous)">
-                                    <span class="text-gray-900 font-black underline decoration-4 decoration-green-300 underline-offset-4">clothes</span>
-                                    <span>from the 80s are still trendy among rappers and hip hoppers.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="bg-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                            <div class="absolute top-0 left-0 w-2 h-full bg-purple-400"></div>
-                            <div class="flex flex-col lg:flex-row lg:items-center gap-4">
-                                <span class="font-black text-gray-300 text-2xl w-6">4</span>
-                                <div class="flex-1 text-lg text-gray-700 leading-relaxed flex flex-wrap items-center gap-2">
-                                    <span>Besides flannel shirts, the 90s grunge style included worn out jeans and</span>
-                                    <input type="text" data-correct="comfortable leather" onblur="checkInput(this)" class="interactive-input bg-gray-50 border-2 border-gray-200 focus:border-purple-500 focus:bg-white text-center font-bold text-purple-600 px-4 py-2 w-full sm:w-64 rounded-xl shadow-inner transition-all placeholder:font-normal placeholder:text-gray-400 placeholder:text-sm" placeholder="(leather / comfortable)">
-                                    <span class="text-gray-900 font-black underline decoration-4 decoration-purple-300 underline-offset-4">sneakers</span>.
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Material -->
+                    <div class="bg-white rounded-2xl border-2 border-green-200 overflow-hidden shadow-sm flex flex-col">
+                        <div class="bg-green-100 text-center py-3 font-black text-green-800 text-sm tracking-widest uppercase border-b-2 border-green-200">Material</div>
+                        <ul id="cat-material" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-green-50/30"></ul>
+                    </div>
+                    <!-- Color / Pattern -->
+                    <div class="bg-white rounded-2xl border-2 border-yellow-200 overflow-hidden shadow-sm flex flex-col">
+                        <div class="bg-yellow-100 text-center py-3 font-black text-yellow-800 text-sm tracking-widest uppercase border-b-2 border-yellow-200">Colour / Pattern</div>
+                        <ul id="cat-color" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-yellow-50/30"></ul>
+                    </div>
+                    <!-- Opinion -->
+                    <div class="bg-white rounded-2xl border-2 border-pink-200 overflow-hidden shadow-sm flex flex-col">
+                        <div class="bg-pink-100 text-center py-3 font-black text-pink-800 text-sm tracking-widest uppercase border-b-2 border-pink-200">Opinion</div>
+                        <ul id="cat-opinion" class="p-4 flex-1 flex flex-col gap-3 min-h-dropzone bg-pink-50/30"></ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="grid lg:grid-cols-2 gap-8">
-            <section class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl shadow-lg border border-cyan-400 p-6 lg:p-8 text-white relative overflow-hidden">
-                <!-- Background decoration -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-20 -translate-y-20"></div>
-                <div class="absolute bottom-0 left-0 w-40 h-40 bg-black opacity-10 rounded-full transform -translate-x-10 translate-y-10"></div>
-                
-                <div class="flex items-center gap-3 mb-8 relative z-10">
-                    <div class="bg-white text-blue-700 px-5 py-2 rounded-full font-black text-sm shadow-md flex items-center gap-2">
-                        <i class="fas fa-comments"></i> SPEAKING
-                    </div>
-                </div>
-
-                <div class="space-y-10 relative z-10">
-                    
-                    <!-- Digital Spot the Difference -->
-                    <div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="bg-white text-cyan-600 w-10 h-10 rounded-full flex items-center justify-center font-black shrink-0 shadow-md text-lg">6</div>
-                            <p class="font-bold text-xl pt-1">Spot the Differences: Style Showdown!</p>
-                        </div>
-                        <p class="text-cyan-100 font-medium ml-14 mb-4">Work with a partner. Look at Outfit A and Outfit B. Describe them to each other using adjective order to find differences!</p>
-                        
-                        <div class="ml-0 sm:ml-14 grid grid-cols-2 gap-4">
-                            <!-- Outfit A -->
-                            <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 text-center hover:bg-white/20 transition-all">
-                                <h4 class="font-black mb-3 tracking-widest text-sm text-yellow-300 uppercase">Outfit A (The 90s)</h4>
-                                <div class="grid grid-cols-2 gap-2 text-3xl mb-3 justify-items-center">
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Baggy cotton t-shirt">👕</div>
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Checked flannel shirt">👔</div>
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Skinny acid-washed jeans">👖</div>
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Worn-out high-top sneakers">👟</div>
-                                </div>
-                                <p class="text-xs text-cyan-50 font-medium">Hint: Describe the shirt, jeans, and shoes!</p>
-                            </div>
-                            <!-- Outfit B -->
-                            <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 text-center hover:bg-white/20 transition-all">
-                                <h4 class="font-black mb-3 tracking-widest text-sm text-pink-300 uppercase">Outfit B (The 70s)</h4>
-                                <div class="grid grid-cols-2 gap-2 text-3xl mb-3 justify-items-center">
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Tight colorful silk top">👚</div>
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Flared denim trousers">👖</div>
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Cool platform shoes">👡</div>
-                                    <div class="bg-black/20 p-3 rounded-xl w-full" title="Awesome spike bracelet">💿</div>
-                                </div>
-                                <p class="text-xs text-cyan-50 font-medium">Hint: Look at the style and material!</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Create a Band Poster -->
-                    <div>
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="bg-white text-cyan-600 w-10 h-10 rounded-full flex items-center justify-center font-black shrink-0 shadow-md text-lg">7</div>
-                            <p class="font-bold text-xl pt-1">Create your own band!</p>
-                        </div>
-                        <p class="text-cyan-100 font-medium ml-14 mb-4">Fill out your band's official debut poster below.</p>
-                        
-                        <!-- Interactive Poster -->
-                        <div class="ml-0 sm:ml-14 bg-[url('https://www.transparenttextures.com/patterns/crumpled-paper.png')] bg-gray-100 rounded-2xl p-6 shadow-xl border-4 border-gray-800 text-gray-900 transform rotate-1 hover:rotate-0 transition-transform">
-                            <h3 class="band-font text-3xl text-center mb-6 uppercase text-red-600 tracking-wider flex items-center justify-center gap-2">
-                                <i class="fas fa-star text-yellow-400"></i> Debut Concert <i class="fas fa-star text-yellow-400"></i>
-                            </h3>
-                            
-                            <div class="space-y-4 font-bold">
-                                <div>
-                                    <label class="block text-sm uppercase tracking-widest text-gray-500 mb-1">Band Name</label>
-                                    <input type="text" class="w-full bg-transparent border-b-2 border-gray-800 focus:border-red-500 focus:outline-none band-font text-2xl text-center px-2 py-1 placeholder-gray-400" placeholder="e.g. The Neon Rebels">
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm uppercase tracking-widest text-gray-500 mb-1">Music Genre</label>
-                                        <input type="text" class="w-full bg-transparent border-b-2 border-gray-400 focus:border-red-500 focus:outline-none text-center px-2 py-1 placeholder-gray-400" placeholder="Indie Rock">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm uppercase tracking-widest text-gray-500 mb-1">Fashion Style</label>
-                                        <input type="text" class="w-full bg-transparent border-b-2 border-gray-400 focus:border-red-500 focus:outline-none text-center px-2 py-1 placeholder-gray-400" placeholder="90s Grunge">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm uppercase tracking-widest text-gray-500 mb-1">Hit Single Name</label>
-                                    <input type="text" class="w-full bg-transparent border-b-2 border-gray-800 focus:border-red-500 focus:outline-none band-font text-xl text-center px-2 py-1 placeholder-gray-400" placeholder='"Platform Shoes Blues"'>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-12 bg-yellow-300 text-yellow-900 p-6 rounded-2xl shadow-xl border-4 border-yellow-400 relative transform -rotate-2 hover:rotate-0 transition-all z-20">
-                    <h4 class="font-black text-lg uppercase tracking-widest mb-3 flex items-center gap-2">
-                        <i class="fas fa-comment-dots text-yellow-600 text-2xl"></i> Pocket Expressions
-                    </h4>
-                    <ul class="text-base font-bold space-y-2">
-                        <li class="flex items-center gap-2"><i class="fas fa-caret-right text-yellow-600"></i> I think we should...</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-caret-right text-yellow-600"></i> Why don't we...?</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-caret-right text-yellow-600"></i> It would be better if...</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-caret-right text-yellow-600"></i> I prefer... to...</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-caret-right text-yellow-600"></i> I'd rather... than...</li>
-                    </ul>
-                </div>
-            </section>
-
-            <div class="space-y-8 flex flex-col justify-between">
-                <!-- Exit Ticket -->
-                <section class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 lg:p-8 flex-1">
-                    <h3 class="font-black text-2xl text-gray-800 mb-6 flex items-center gap-3">
-                        <div class="bg-pastel-pink w-12 h-12 rounded-xl flex items-center justify-center border-2 border-pink-200">
-                            <i class="fas fa-ticket-alt text-pink-500 text-2xl"></i> 
-                        </div>
-                        Exit Ticket
-                    </h3>
-                    <div class="bg-pastel-pink/40 p-6 rounded-2xl border-2 border-pink-100 space-y-6">
-                        <div>
-                            <p class="text-gray-800 font-bold mb-3 text-lg">Today we studied about:</p>
-                            <textarea class="w-full rounded-xl border-2 border-white shadow-sm focus:border-pink-400 focus:ring-4 focus:ring-pink-100 p-4 text-gray-700 resize-none font-medium text-lg transition-all" rows="2" placeholder="Write your answer here..."></textarea>
-                        </div>
-                        <div>
-                            <p class="text-gray-800 font-bold mb-3 text-lg">One example is:</p>
-                            <input type="text" class="w-full rounded-xl border-2 border-white shadow-sm focus:border-pink-400 focus:ring-4 focus:ring-pink-100 p-4 text-gray-700 font-medium text-lg transition-all" placeholder="Write your answer here...">
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Homework -->
-                <section class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 lg:p-8">
-                    <h3 class="font-black text-2xl text-gray-800 mb-6 flex items-center gap-3">
-                        <div class="bg-pastel-blue w-12 h-12 rounded-xl flex items-center justify-center border-2 border-blue-200">
-                            <i class="fas fa-home text-blue-500 text-2xl"></i>
-                        </div>
-                        Homework
-                    </h3>
-                    <div class="bg-pastel-blue/40 p-6 rounded-2xl border-2 border-blue-100 flex items-start gap-4 hover:bg-blue-50 transition-colors cursor-default">
-                        <div class="bg-white p-4 rounded-xl text-blue-600 shadow-sm border border-blue-100">
-                            <i class="fas fa-book-open text-2xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-gray-900 font-black text-lg mb-2">Notebook Assignment</p>
-                            <p class="text-gray-700 font-medium leading-relaxed">Copy the grammar box on Student's book page 12, exercise 3 and add <strong class="bg-yellow-200 px-1 rounded">3 more adjectives</strong> to it from your own closet!</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // SortableJS Configuration
+            // SortableJS Configuration for Homework (Activity 3)
             const sharedOptions = {
                 group: 'vocab',
                 animation: 150,
@@ -717,7 +514,13 @@
                         }
                     } else if (targetId === 'extraWordBank') {
                         // Return to bank neutral styling
-                        item.classList.add('bg-white', 'border-2', 'border-gray-200', 'text-gray-800', 'hover:bg-gray-50');
+                        if (item.classList.contains('bg-yellow-100')) {
+                            // original highlighted word
+                            item.classList.add('bg-yellow-100', 'border-2', 'border-yellow-300', 'text-yellow-900', 'hover:-translate-y-0.5');
+                        } else {
+                            // original normal word
+                            item.classList.add('bg-gray-100', 'border-2', 'border-gray-200', 'text-gray-800', 'hover:bg-gray-200', 'hover:-translate-y-0.5');
+                        }
                     }
                 }
             };
@@ -801,23 +604,6 @@
                 selectElement.classList.add('val-correct');
             } else {
                 selectElement.classList.add('val-incorrect');
-            }
-        }
-
-        // Validation for Text Inputs (Activity 4 & 5)
-        function checkInput(inputElement) {
-            const correctVals = inputElement.getAttribute('data-correct').split(',');
-            // Clean user input: lowercase, remove extra spaces, trim
-            const userVal = inputElement.value.trim().toLowerCase().replace(/\s+/g, ' '); 
-            
-            inputElement.classList.remove('val-correct', 'val-incorrect');
-            if (userVal === '') return;
-
-            let isCorrect = correctVals.some(val => val.trim().toLowerCase() === userVal);
-            if (isCorrect) {
-                inputElement.classList.add('val-correct');
-            } else {
-                inputElement.classList.add('val-incorrect');
             }
         }
     </script>
